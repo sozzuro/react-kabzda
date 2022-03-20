@@ -1,42 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Toogle.module.css';
 
-type tooglePropsType = {
-    status: boolean
-}
+const Toggle = () => {
 
-type buttonTogglePropsType = {
-    checked: boolean
-}
+    const [on, setOn] = useState(true);
 
-const Toggle = (props: tooglePropsType) => {
+    const styleOnButton = {
+        cursor: on ? 'default' : 'pointer',
+        display: 'inline-block',
+        padding: '10px 20px',
+        border: '1px solid black',
+        backgroundColor: on ? 'green' : 'transparent',
+        color: on ? 'white' : 'black',
+    }
+
+    const styleOffButton = {
+        cursor: on ? 'pointer   ' : 'default',
+        display: 'inline-block',
+        padding: '10px 20px',
+        border: '1px solid black',
+        backgroundColor: on ? 'transparent' : 'red',
+        color: on ? 'black' : 'white',
+    }
+
+    const styleIndicatorButton = {
+        display: 'inline-block',
+        width: '20px',
+        height: '20px',
+        marginLeft: '10px',
+        border: '1px solid black',
+        borderRadius: '50%',
+        verticalAlign: 'middle',
+        backgroundColor: on ? 'green' : 'red',
+        color: on ? 'black' : 'white',
+    }
+
+
     return (
-        <div style={{marginTop: '10px'}}>
-            <ButtonToggle checked={props.status}/>
+        <div>
+            <div style={styleOnButton} onClick={() => setOn(true)}>ON</div>
+            <div style={styleOffButton} onClick={() => setOn(false)}>OFF</div>
+            <div style={styleIndicatorButton}/>
         </div>
     );
 };
-
-function ButtonToggle(props: buttonTogglePropsType) {
-    if (props.checked === true) {
-        return (
-            <div>
-                <div className={`${styles.button} ${styles.onActive}`}>ON</div>
-                <div className={styles.button}>OFF</div>
-                <div className={`${styles.indicator} ${styles.onActive}`}/>
-            </div>
-
-        )
-    } else {
-        return (
-            <div>
-                <div className={styles.button}>ON</div>
-                <div className={`${styles.button} ${styles.offActive}`}>OFF</div>
-                <div className={`${styles.indicator} ${styles.offActive}`}/>
-            </div>
-
-        )
-    }
-}
 
 export default Toggle;

@@ -3,6 +3,8 @@ import './App.css';
 import Accordion from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
 import Toggle from "./components/Toggle/Toggle";
+import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 
 
 function App() {
@@ -10,20 +12,23 @@ function App() {
         <div>
             <PageTitle title={"This is APP component"}/>
             <PageTitle title={"Users"}/>
-            Article 1
-            <Rating value={3}/>
+            Accordion
             <Accordion titleValue={"Меню"} collapsed={true}/>
-            <Accordion titleValue={"Меню"} collapsed={false}/>
-            Article 2
+            UncontrolledAccordion
+            <UncontrolledAccordion titleValue={"Меню"}/>
+            Rating
             <Rating value={0}/>
             <Rating value={1}/>
             <Rating value={2}/>
             <Rating value={3}/>
             <Rating value={4}/>
             <Rating value={5}/>
-
-            <Toggle status={true}/>
-            <Toggle status={false}/>
+            Toggle
+            <Toggle/>
+            {/*<Toggle status={false}/>*/}
+            Rating
+            Uncontrolled
+            <UncontrolledRating/>
         </div>
     );
 }
