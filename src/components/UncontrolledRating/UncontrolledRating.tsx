@@ -4,6 +4,7 @@ type UncontrolledRatingPropsType = 0 | 1 | 2 | 3 | 4 | 5
 
 type StarPropsType = {
     selected: boolean
+    callback: () => void
 }
 
 export function UncontrolledRating() {
@@ -16,25 +17,16 @@ export function UncontrolledRating() {
 
     return (
         <div>
-            <button onClick={() => onClickSelectedHandler(0)}>0</button>
-            <Star selected={selected > 0}/>
-            <button onClick={() => onClickSelectedHandler(1)}>1</button>
-            <Star selected={selected > 1}/>
-            <button onClick={() => onClickSelectedHandler(2)}>2</button>
-            <Star selected={selected > 2}/>
-            <button onClick={() => onClickSelectedHandler(3)}>3</button>
-            <Star selected={selected > 3}/>
-            <button onClick={() => onClickSelectedHandler(4)}>4</button>
-            <Star selected={selected > 4}/>
-            <button onClick={() => onClickSelectedHandler(5)}>5</button>
+            <Star selected={selected > 0} callback={() => onClickSelectedHandler(1)}/>
+            <Star selected={selected > 1} callback={() => onClickSelectedHandler(2)}/>
+            <Star selected={selected > 2} callback={() => onClickSelectedHandler(3)}/>
+            <Star selected={selected > 3} callback={() => onClickSelectedHandler(4)}/>
+            <Star selected={selected > 4} callback={() => onClickSelectedHandler(5)}/>
         </div>
     )
 }
 
 function Star(props: StarPropsType) {
-    if (props.selected === true) {
-        return <span><b>star</b> </span>
-    } else {
-        return <span>star </span>
-    }
+    return props.selected === true ? <span style={{cursor: "pointer"}} onClick={props.callback}><b>star</b> </span> :
+        <span style={{cursor: "pointer"}} onClick={props.callback}>star </span>
 }
