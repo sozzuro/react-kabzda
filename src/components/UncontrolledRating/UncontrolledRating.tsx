@@ -27,6 +27,5 @@ export function UncontrolledRating() {
 }
 
 function Star(props: StarPropsType) {
-    return props.selected === true ? <span style={{cursor: "pointer"}} onClick={props.callback}><b>star</b> </span> :
-        <span style={{cursor: "pointer"}} onClick={props.callback}>star </span>
+    return <span style={{cursor: "pointer"}} onClick={props.callback}>{props.selected ? <b>star</b> : 'star'} </span>
 }
